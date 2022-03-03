@@ -4,7 +4,7 @@ import zipfile
 import json, os
 
 pwd=os.getcwd()
-p= pwd + '\\Output'
+p= pwd + '\\results'
 os.mkdir(p)
 
 files = [f for f in listdir("nvd/") if isfile(join("nvd/", f))]
@@ -21,6 +21,7 @@ for file in files:
 		filename = json.dumps(cve_dict['CVE_Items'][i]['cve']['CVE_data_meta']['ID'])
 		filename = filename.split('"')[1]+".json"
 		file = filename.split("-")[1]
+		print(file+'\\'+filename)
 		try: os.mkdir(p+"\\"+file)
 		except: pass
 		with open(p+'\\'+file+'\\'+filename, "a") as outfile:
